@@ -1,24 +1,46 @@
 package br.com.ecommerce.projetoecommerce.entity;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity @Table(name = "tb_nota_compra")
 public class NotaCompra {
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 
-	private LocalDateTime garantiaPadrao;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dt_garantia_padrao")
+	private Date garantiaPadrao;
 
-	private LocalDateTime garantiaExtendida;
-
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dt_garantia_extendida")
+	private Date garantiaExtendida;
+	
+	@Column(name = "vl_valor_total", nullable = false)
 	private float valorTotal;
-
-	private LocalDateTime dataCompra;
-
-	private LocalDateTime dataEntrega;
-
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dt_compra", nullable = false)
+	private Date dataCompra;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dt_entrega", nullable = false)
+	private Date dataEntrega;
+	
 	private Cliente cliente;
-
+	
 	private Produto produto;
-
+	
 	public NotaCompra() {
 	}
 
@@ -98,4 +120,5 @@ public class NotaCompra {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
+
 }
