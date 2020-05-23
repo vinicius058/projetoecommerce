@@ -1,13 +1,40 @@
 package br.com.ecommerce.projetoecommerce.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_endereco")
 public class Endereco {
+	@Id
+	@Column(name = "id_endereco")
 	private int codigo;
+	
+	@Column(name = "ds_logradouro", nullable = false)
 	private String logradouro;
+	
+	@Column(name = "ds_numero", nullable = false)
 	private int numero;
+	
+	@Column(name = "ds_complemento")
 	private String complemento;
+	
+	@Column(name = "ds_cep", nullable = false)
 	private String cep;
+	
+	@Column(name = "ds_bairro", nullable = false)
 	private String bairro;
+	
+	@Column(name = "ds_cidade", nullable = false)
 	private String cidade;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "ds_uf", length = 2)
+	private UF uf;
 	
 	public Endereco() {
 		
