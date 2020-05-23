@@ -1,14 +1,37 @@
 package br.com.ecommerce.projetoecommerce.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity @Table(name = "tb_produto")
 public class Produto {
 	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
+	
+	@Column(name = "ds_nome" , nullable = false, length = 100)
 	private String nome;
+	
+	@Column(name = "vl_preco", nullable = false)
 	private float preço;
+	
+	@Column(name = "ds_cor")
 	private String cor;
+	
+	@Column(name = "ds_marca", nullable = false , length = 100)
 	private String marca;
+	
+	@Column(name = "ds_descricao")
 	private String descricao;
+	
+	@Column(name = "qt_estoque")
 	private int estoque;
+	
+	@Column(name = "id_administrador", nullable = false, length = 11)
 	private int codigoAdministrador;
 	
 	public Produto() {

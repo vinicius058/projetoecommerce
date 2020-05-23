@@ -1,23 +1,41 @@
 package br.com.ecommerce.projetoecommerce.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity @Table(name = "tb_cliente")
 public class Cliente {
 	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	
+	@Column(name ="ds_nome", nullable = false, length = 100)
 	private String nome;
 	
+	@Column(name ="ds_email", nullable = false, length = 30)
 	private String email;
 	
-	private LocalDateTime dataNascimento;
+	@Temporal(TemporalType.DATE)
+	@Column(name ="dt_nascimento", nullable = false)
+	private Date dataNascimento;
 	
+	@Column(name ="ds_cpf", nullable = false, length = 13)
 	private String cpf;
 	
+	@Column(name ="ds_rg", nullable = false, length = 10)
 	private String rg;
 	
-	private Long numeroCatao;
+	@Column(name ="id_numero_cartao", length = 16)
+	private Long numeroCartao;
 	
 	private Endereco endereco;
 
@@ -28,13 +46,13 @@ public class Cliente {
 	public Cliente(int codigo, String nome, String email, LocalDateTime dataNascimento, String cpf, String rg,
 			Long numeroCatao, Endereco endereco) {
 		super();
-		this.codigo = codigo;
+		this.setCodigo(codigo);
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.rg = rg;
-		this.numeroCatao = numeroCatao;
+		this.numeroCartao = numeroCatao;
 		this.endereco = endereco;
 	}
 
@@ -86,12 +104,12 @@ public class Cliente {
 		this.rg = rg;
 	}
 
-	public Long getNumeroCatao() {
-		return numeroCatao;
+	public Long getNumeroCartao() {
+		return numeroCartao;
 	}
 
-	public void setNumeroCatao(Long numeroCatao) {
-		this.numeroCatao = numeroCatao;
+	public void setNumeroCartao(Long numeroCatao) {
+		this.numeroCartao = numeroCatao;
 	}
 
 	public Endereco getEndereco() {
@@ -103,4 +121,7 @@ public class Cliente {
 	}
 	
 	
+
+
 }
+
