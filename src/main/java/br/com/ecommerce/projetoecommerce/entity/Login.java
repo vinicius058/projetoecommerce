@@ -1,9 +1,22 @@
 package br.com.ecommerce.projetoecommerce.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity @Table(name = "tb_login")
 public class Login {
 
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
+	
+	@Column(name = "ds_usuario")
 	private String usuario;
+	
+	@Column(name = "ds_senha")
 	private String senha;
 	
 	public Login() {
