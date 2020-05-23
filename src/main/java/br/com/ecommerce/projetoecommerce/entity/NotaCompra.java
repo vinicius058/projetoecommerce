@@ -44,8 +44,8 @@ public class NotaCompra {
 	public NotaCompra() {
 	}
 
-	public NotaCompra(int codigo, LocalDateTime garantiaPadrao, LocalDateTime garantiaExtendida, float valorTotal,
-			LocalDateTime dataCompra, LocalDateTime dataEntrega, Cliente cliente, Produto produto) {
+	public NotaCompra(int codigo, Date garantiaPadrao, Date garantiaExtendida, float valorTotal,
+			Date dataCompra, Date dataEntrega, Cliente cliente, Produto produto) {
 		super();
 		this.codigo = codigo;
 		this.garantiaPadrao = garantiaPadrao;
@@ -65,19 +65,19 @@ public class NotaCompra {
 		this.codigo = codigo;
 	}
 
-	public LocalDateTime getGarantiaPadrao() {
+	public Date getGarantiaPadrao() {
 		return garantiaPadrao;
 	}
 
-	public void setGarantiaPadrao(LocalDateTime garantiaPadrao) {
+	public void setGarantiaPadrao(Date garantiaPadrao) {
 		this.garantiaPadrao = garantiaPadrao;
 	}
 
-	public LocalDateTime getGarantiaExtendida() {
+	public Date getGarantiaExtendida() {
 		return garantiaExtendida;
 	}
 
-	public void setGarantiaExtendida(LocalDateTime garantiaExtendida) {
+	public void setGarantiaExtendida(Date garantiaExtendida) {
 		this.garantiaExtendida = garantiaExtendida;
 	}
 
@@ -89,19 +89,19 @@ public class NotaCompra {
 		this.valorTotal = valorTotal;
 	}
 
-	public LocalDateTime getDataCompra() {
+	public Date getDataCompra() {
 		return dataCompra;
 	}
 
-	public void setDataCompra(LocalDateTime dataCompra) {
+	public void setDataCompra(Date dataCompra) {
 		this.dataCompra = dataCompra;
 	}
 
-	public LocalDateTime getDataEntrega() {
+	public Date getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(LocalDateTime dataEntrega) {
+	public void setDataEntrega(Date dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 

@@ -43,7 +43,7 @@ public class Cliente {
 	 public Cliente() {
 	}
 	
-	public Cliente(int codigo, String nome, String email, LocalDateTime dataNascimento, String cpf, String rg,
+	public Cliente(int codigo, String nome, String email, Date dataNascimento, String cpf, String rg,
 			Long numeroCatao, Endereco endereco) {
 		super();
 		this.setCodigo(codigo);
@@ -80,11 +80,11 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public LocalDateTime getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDateTime dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
