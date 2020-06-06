@@ -1,13 +1,20 @@
 package br.com.ecommerce.projetoecommerce.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,14 +44,21 @@ public class Cliente {
 	@Column(name ="id_numero_cartao", length = 16)
 	private Long numeroCartao;
 	
-	private Endereco endereco;
-
+	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable (name = "mora", joinColumns = @JoinColumn (name = "id_cliente", nullable = false), inverseJoinColumns = @JoinColumn (name = "id_endereco", nullable = false) )
+	private List <Endereco> enderecos = new ArrayList <>();
 	
-	 public Cliente() {
+	@OneToOne (cascade = { CascadeType.PERSIST,CascadeType.REMOVE }, fetch = FetchType.LAZY )
+	@JoinColumn(name = "id_login", nullable = false, unique = true)
+	private Login login;
+	
+
+
+	public Cliente() {
 	}
 	
 	public Cliente(int codigo, String nome, String email, Date dataNascimento, String cpf, String rg,
-			Long numeroCatao, Endereco endereco) {
+			Long numeroCatao) {
 		super();
 		this.setCodigo(codigo);
 		this.nome = nome;
@@ -53,7 +67,7 @@ public class Cliente {
 		this.cpf = cpf;
 		this.rg = rg;
 		this.numeroCartao = numeroCatao;
-		this.endereco = endereco;
+
 	}
 
 	public int getCodigo() {
@@ -111,15 +125,14 @@ public class Cliente {
 	public void setNumeroCartao(Long numeroCatao) {
 		this.numeroCartao = numeroCatao;
 	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
 	
+	 public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
 	
 
 

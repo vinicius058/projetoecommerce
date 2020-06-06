@@ -2,9 +2,12 @@ package br.com.ecommerce.projetoecommerce.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity @Table(name = "tb_produto")
@@ -31,8 +34,13 @@ public class Produto {
 	@Column(name = "qt_estoque")
 	private int estoque;
 	
-	@Column(name = "id_administrador", nullable = false, length = 11)
-	private int codigoAdministrador;
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn (name = "id_administrador", nullable = false) 
+	private Administrador administrador ;
+	
+
+
+	private NotaCompra notaCompra;
 	
 	public Produto() {
 		
@@ -40,7 +48,7 @@ public class Produto {
 
 	
 	public Produto(int codigo, String nome, float preço, String cor, String marca, String descricao, int estoque,
-			int codigoAdministrador) {
+			Administrador administrador) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -49,7 +57,7 @@ public class Produto {
 		this.marca = marca;
 		this.descricao = descricao;
 		this.estoque = estoque;
-		this.codigoAdministrador = codigoAdministrador;
+		this.administrador = administrador;
 	}
 	
 	
@@ -95,12 +103,25 @@ public class Produto {
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
-	public int getCodigoAdministrador() {
-		return codigoAdministrador;
+
+	public NotaCompra getNotaCompra() {
+		return notaCompra;
 	}
-	public void setCodigoAdministrador(int codigoAdministrador) {
-		this.codigoAdministrador = codigoAdministrador;
+
+
+	public void setNotaCompra(NotaCompra notaCompra) {
+		this.notaCompra = notaCompra;
 	}
+	
+	public Administrador getAdministrador() {
+		return administrador;
+	}
+
+
+	public void setAdministrador(Administrador administrador) {
+		this.administrador = administrador;
+	}
+
 	
 
 }

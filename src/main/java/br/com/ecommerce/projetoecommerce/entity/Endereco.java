@@ -1,10 +1,16 @@
 package br.com.ecommerce.projetoecommerce.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -37,6 +43,11 @@ public class Endereco {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ds_uf", length = 2)
 	private UF uf;
+
+	@ManyToMany (mappedBy = "enderecos", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER )
+	private List <Cliente> clientes = new ArrayList <>();
+	
+	
 	
 	public Endereco() {
 		
@@ -96,6 +107,14 @@ public class Endereco {
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public List <Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List <Cliente> clientes) {
+		this.clientes = clientes;
 	}
 	
 	
