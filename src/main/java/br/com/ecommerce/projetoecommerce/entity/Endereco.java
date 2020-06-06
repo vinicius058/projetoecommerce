@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "tb_endereco")
 public class Endereco {
@@ -51,6 +53,7 @@ public class Endereco {
 		this.bairro = bairro;
 		this.cidade = cidade;
 	}
+	
 	
 	public int getCodigo() {
 		return codigo;
